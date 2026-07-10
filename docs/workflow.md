@@ -149,3 +149,18 @@ Each execution creates a timestamped report directory containing:
 * HTML reports
 
 This organization allows previous reconnaissance runs to be preserved for future reference.
+
+## Architecture
+
+The project is organized as a linear pipeline.
+
+The main entry point (`all_together.sh`) creates a timestamped report directory and orchestrates two independent stages:
+
+- Infrastructure reconnaissance (`together_1.sh`)
+- HTTP reconnaissance (`together_2.sh`)
+
+Each stage is responsible for producing the input required by the next stage while preserving all intermediate artifacts.
+
+Report generation is intentionally separated into dedicated scripts (`gen_html_report.sh` and `gen_http_html_report.sh`) to keep data collection and presentation independent.
+
+This modular structure makes each stage easier to understand, maintain, and modify without affecting the overall workflow.

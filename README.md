@@ -2,28 +2,22 @@
 
 A Bash-based reconnaissance automation pipeline that automates post-enumeration reconnaissance for bug bounty and penetration testing engagements.
 
-The pipeline combines MassDNS, Masscan, Nmap, httprobe, and a modified version of httpq to generate organized HTML reports and preserve scan artifacts for future analysis.
+The pipeline combines MassDNS, Masscan, Nmap, httprobe, and a modified version of httpq to generate organized HTML reports, reducing the manual effort required to correlate results from multiple reconnaissance tools.
+
+It was developed to automate the repetitive DNS resolution, port scanning, service detection, and HTTP fingerprinting workflow commonly performed during bug bounty engagements.
 
 ---
 
 ## Features
 
 - Automated DNS resolution
-- Fast port discovery
+- Port discovery using Masscan
 - Nmap service detection
-- HTTP fingerprinting
+- HTTP fingerprinting using a modified httpq
 - HTML report generation
 - Archived HTTP responses
 - Timestamped report directories
 - Single-command execution
-
----
-
-## Why I Built This
-
-During bug bounty engagements, I repeatedly performed the same sequence of DNS resolution, port scanning, service detection, and HTTP fingerprinting. While the individual tools were effective, reviewing and correlating their outputs manually became repetitive and time-consuming.
-
-This project automates that workflow into a single command, generates readable HTML reports, and archives HTTP responses for future analysis.
 
 ---
 
@@ -66,11 +60,13 @@ This project automates that workflow into a single command, generates readable H
                HTML HTTP Report
 ```
 
+For a detailed explanation of each stage and the design decisions behind the pipeline, see [docs/workflow.md](docs/workflow.md).
+
 ---
 
 ## Installation & Usage
 
-### Prerequisites
+### Install the following tools before running the pipeline:
 
 - MassDNS
 - Masscan
@@ -85,62 +81,39 @@ cd recon-automation-pipeline
 ```
 ---
 
-## Generated Reports
+## Example Execution
 
-Each execution creates a timestamped report directory inside `reports/`.
+### 1. Input
 
-```
-reports/
-└── report_<timestamp>/
-    ├── dns_stuff/
-    └── http_fingerprinting/
-```
+The pipeline expects a text file containing one subdomain per line.
 
-### Port Scanning Report
+![Input Subdomains](docs/screenshots/input-subdomains.png)
 
-The generated HTML report includes:
+### 2. Port Scanning Report
 
-* IP Address
-* Corresponding Subdomain
-* Open Ports
-* Number of Open Ports
-* Individual Nmap scans
-
----
-
-### HTTP Report
-
-The generated HTTP report includes:
-
-* Alive URL
-* HTTP Status Code
-* HTML Title
-* Saved HTTP response source code
-
----
-
-## Screenshots
-
-### Port Scanning Report
+The generated port scanning report correlates resolved subdomains, IP addresses, open ports, and links to individual Nmap service scans.
 
 ![Port Report](docs/screenshots/port-report.png)
 
-### HTTP Fingerprinting Report
+### 3. HTTP Fingerprinting Report
+
+The HTTP report summarizes reachable web applications, displaying their URLs, HTTP status codes, HTML titles, links to archived HTTP responses, and the corresponding port scanning results.
 
 ![HTTP Report](docs/screenshots/http-report.png)
 
+### 4. Generated Artifacts
+
+Each execution creates a timestamped report directory containing all intermediate outputs, archived HTTP responses, and generated HTML reports.
+
+![Reports Structure](docs/screenshots/reports-structure.png)
+
 ---
+## Documentation
 
-## Core Technologies
+- [Reconnaissance Workflow](docs/workflow.md)
+- [Modified httpq](docs/modified-httpq.md)
 
-* Bash
-* Python
-* MassDNS
-* Masscan
-* Nmap
-* httprobe
-* httpq (modified)
-
+---
 ## Limitations
 
 * Linux only (tested on Linux)
@@ -160,8 +133,10 @@ The planned enhancement is integrated subdomain enumeration, allowing users to s
 
 ## Acknowledgements
 
-- **httpq** – Bundles a modified version of the original project. The Apache 2.0 license is preserved in `httpq/`.
-- **Trickest Resolvers** – `wordlists/resolvers-trusted.txt` is sourced from the Trickest Resolvers project (MIT License).
+- **httpq**
+- **Trickest Resolvers**
+
+For details about the bundled modified version of `httpq`, see [docs/modified-httpq.md](docs/modified-httpq.md).
 
 ---
 

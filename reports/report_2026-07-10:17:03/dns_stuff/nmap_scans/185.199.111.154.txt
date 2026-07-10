@@ -1,0 +1,43 @@
+# Nmap 7.99 scan initiated Fri Jul 10 17:04:15 2026 as: /usr/lib/nmap/nmap -sV -p 443,80, -oN nmap_scans/185.199.111.154.txt 185.199.111.154
+Nmap scan report for cdn-185-199-111-154.github.com (185.199.111.154)
+Host is up (0.012s latency).
+
+PORT    STATE SERVICE    VERSION
+80/tcp  open  http-proxy Varnish
+443/tcp open  ssl/https  GitHub.com
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port443-TCP:V=7.99%T=SSL%I=7%D=7/10%Time=6A50D8C3%P=x86_64-pc-linux-gnu
+SF:%r(GetRequest,1BC,"HTTP/1\.1\x20421\x20Misdirected\x20Request\r\nConnec
+SF:tion:\x20close\r\nContent-Length:\x20291\r\ncontent-type:\x20text/plain
+SF:;\x20charset=utf-8\r\nx-served-by:\x20cache-bom-vanm7210085\r\n\r\nRequ
+SF:ested\x20host\x20does\x20not\x20match\x20any\x20Subject\x20Alternative\
+SF:x20Names\x20\(SANs\)\x20on\x20TLS\x20certificate\x20\[e608ddc3043ebe907
+SF:5f72551ddeac5f73fa74ae640447d5e2b47a465bbfbf378\]\x20in\x20use\x20with\
+SF:x20this\x20connection\.\r\n\r\nVisit\x20https://www\.fastly\.com/docume
+SF:ntation/guides/concepts/errors/#routing-errors\x20for\x20more\x20inform
+SF:ation\.\r\n\r")%r(HTTPOptions,1BC,"HTTP/1\.1\x20421\x20Misdirected\x20R
+SF:equest\r\nConnection:\x20close\r\nContent-Length:\x20291\r\ncontent-typ
+SF:e:\x20text/plain;\x20charset=utf-8\r\nx-served-by:\x20cache-bom-vanm721
+SF:0083\r\n\r\nRequested\x20host\x20does\x20not\x20match\x20any\x20Subject
+SF:\x20Alternative\x20Names\x20\(SANs\)\x20on\x20TLS\x20certificate\x20\[e
+SF:608ddc3043ebe9075f72551ddeac5f73fa74ae640447d5e2b47a465bbfbf378\]\x20in
+SF:\x20use\x20with\x20this\x20connection\.\r\n\r\nVisit\x20https://www\.fa
+SF:stly\.com/documentation/guides/concepts/errors/#routing-errors\x20for\x
+SF:20more\x20information\.\r\n\r")%r(FourOhFourRequest,1BC,"HTTP/1\.1\x204
+SF:21\x20Misdirected\x20Request\r\nConnection:\x20close\r\nContent-Length:
+SF:\x20291\r\ncontent-type:\x20text/plain;\x20charset=utf-8\r\nx-served-by
+SF::\x20cache-bom-vanm7210089\r\n\r\nRequested\x20host\x20does\x20not\x20m
+SF:atch\x20any\x20Subject\x20Alternative\x20Names\x20\(SANs\)\x20on\x20TLS
+SF:\x20certificate\x20\[e608ddc3043ebe9075f72551ddeac5f73fa74ae640447d5e2b
+SF:47a465bbfbf378\]\x20in\x20use\x20with\x20this\x20connection\.\r\n\r\nVi
+SF:sit\x20https://www\.fastly\.com/documentation/guides/concepts/errors/#r
+SF:outing-errors\x20for\x20more\x20information\.\r\n\r")%r(tor-versions,9B
+SF:,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nConnection:\x20close\r\nContent
+SF:-Length:\x2011\r\ncontent-type:\x20text/plain;\x20charset=utf-8\r\nx-se
+SF:rved-by:\x20cache-bom-vanm7210051\r\n\r\nBad\x20Request")%r(RTSPRequest
+SF:,9B,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nConnection:\x20close\r\nCont
+SF:ent-Length:\x2011\r\ncontent-type:\x20text/plain;\x20charset=utf-8\r\nx
+SF:-served-by:\x20cache-bom-vanm7210081\r\n\r\nBad\x20Request");
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri Jul 10 17:04:30 2026 -- 1 IP address (1 host up) scanned in 15.29 seconds
