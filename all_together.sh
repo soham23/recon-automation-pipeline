@@ -21,12 +21,15 @@ report_dir="$REPORTS_DIR""report_"$timestamp
 
 mkdir -p "$report_dir"
 
+# Convert subdomain file into full path
+subdomain_file="$(realpath "$1")"
+
 ## Step 2 - Execute together_1.sh with the subdomains list (Full Path)
 echo "Executing together_1.sh"
-./together_1.sh "$1" "$rep_folder"
+./together_1.sh "$subdomain_file" "$report_dir"
 echo "Finished Executing together_1.sh"
 
 ## Step 3 - Execute together_2.sh
 echo "Executing together_2.sh"
-./together_2.sh "$rep_folder"
+./together_2.sh "$report_dir"
 echo "Finished Executing together_2.sh"
